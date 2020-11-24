@@ -15,7 +15,7 @@ spec:
       containers:
         - env:
             - name: POSTGRES_DB
-              value: payment_service
+              value: payment
             - name: POSTGRES_PASSWORD
               value: "123"
             - name: POSTGRES_USER

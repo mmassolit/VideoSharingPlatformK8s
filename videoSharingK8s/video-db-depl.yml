@@ -15,7 +15,7 @@ spec:
       containers:
         - env:
             - name: POSTGRES_DB
-              value: video_service
+              value: video
             - name: POSTGRES_PASSWORD
               value: "123"
             - name: POSTGRES_USER

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roles
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roles
+  template:
+    metadata:
+      labels:
+        app: roles
+    spec:
+      containers:
+        -
+          image: mmassolit/role
+          name: roles
+          ports:
+            -
+              containerPort: 8081

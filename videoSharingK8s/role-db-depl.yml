@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-role
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-role
+  template:
+    metadata:
+      labels:
+        app: db-role
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: role
+            - name: POSTGRES_PASSWORD
+              value: "123"
+            - name: POSTGRES_USER
+              value: video_sharing_test
+          image: postgres
+          imagePullPolicy: IfNotPresent
+          name: db-role
+          ports:
+            - containerPort: 5432

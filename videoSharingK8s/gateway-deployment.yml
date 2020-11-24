@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payments
+  name: gw
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payments
+      app: gw
   template:
     metadata:
       labels:
-        app: payments
+        app: gw
     spec:
       containers:
         -
-          image: mmassolit/payment
-          name: payments
+          image: mmassolit/gateway
+          name: gw
           ports:
             -
-              containerPort: 8086
+              containerPort: 8080

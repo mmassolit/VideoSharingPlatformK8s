@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-video
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-video
+  template:
+    metadata:
+      labels:
+        app: db-video
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: video_service
+            - name: POSTGRES_PASSWORD
+              value: "123"
+            - name: POSTGRES_USER
+              value: video_sharing_test
+          image: postgres
+          imagePullPolicy: IfNotPresent
+          name: db-video
+          ports:
+            - containerPort: 5432

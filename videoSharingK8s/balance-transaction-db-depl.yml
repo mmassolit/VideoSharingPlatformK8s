@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-balance-transaction
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-balance-transaction
+  template:
+    metadata:
+      labels:
+        app: db-balance-transaction
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: ad_service
+            - name: POSTGRES_PASSWORD
+              value: "123"
+            - name: POSTGRES_USER
+              value: video_sharing_test
+          image: postgres
+          imagePullPolicy: IfNotPresent
+          name: db-balance-transaction
+          ports:
+            - containerPort: 5432

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-playback
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-playback
+  template:
+    metadata:
+      labels:
+        app: db-playback
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: playback_service
+            - name: POSTGRES_PASSWORD
+              value: "123"
+            - name: POSTGRES_USER
+              value: video_sharing_test
+          image: postgres
+          imagePullPolicy: IfNotPresent
+          name: db-playback
+          ports:
+            - containerPort: 5432

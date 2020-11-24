@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: balance-transactions
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: balance-transactions
+  template:
+    metadata:
+      labels:
+        app: balance-transactions
+    spec:
+      containers:
+        -
+          image: mmassolit/balance-transaction
+          name: balance-transactions
+          ports:
+            -
+              containerPort: 8085
